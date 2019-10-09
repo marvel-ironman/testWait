@@ -59,6 +59,9 @@ public class TestWait {
                break;
            }
             element = driver.findElement(locator);
+           if(element.isDisplayed()){
+               break;
+           }
         }
             return element;
     }
