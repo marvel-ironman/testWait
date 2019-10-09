@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.NoSuchElementException;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
@@ -59,20 +60,14 @@ public class TestWait {
                break;
            }
             element = driver.findElement(locator);
-           if(element.isDisplayed()){
+           try{
+           if(element.isDisplayed()) {
                break;
            }
-        }
+           }catch (NoSuchElementException e) {
+               System.out.println(e);
+           }
+           }
             return element;
     }
-
-        public static boolean doesElementE(WebDriver driver, By elem) {
-            if (driver.findElements(elem).size() > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-
 }
